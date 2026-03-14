@@ -30,9 +30,11 @@
     min-height: 100vh; 
     padding: 3rem 4rem;
     page-break-after: always;
-    position: relative;
+    display: flex;
+    flex-direction: column;
   }
   .page:last-child { page-break-after: avoid; }
+  .page-content { flex: 1; }
 
   /* Header bar */
   .topbar {
@@ -240,15 +242,12 @@
 
   /* Footer */
   .page-footer {
-    position: absolute;
-    bottom: 2.5rem;
-    left: 4rem;
-    right: 4rem;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border);
   }
   .page-footer span {
     font-size: 0.7rem;
