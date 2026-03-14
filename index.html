@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Main Branch — Sponsorship Package</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  :root {
+    --navy: #0f172a;
+    --slate-dark: #1e293b;
+    --slate: #475569;
+    --slate-light: #94a3b8;
+    --border: #e2e8f0;
+    --green: #16a34a;
+    --green-light: #dcfce7;
+    --bg: #ffffff;
+    --bg-subtle: #f8fafc;
+    --blue: #208bfe;
+  }
+
+  html { font-size: 16px; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--navy); background: var(--bg); }
+  
+  /* Page break for PDF */
+  .page { 
+    min-height: 100vh; 
+    padding: 3rem 4rem;
+    page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: avoid; }
+
+  /* Header bar */
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 3rem;
+  }
+  .topbar-brand {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+  }
+  .topbar-sub {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--slate-light);
+    font-weight: 500;
+  }
+  .topbar-page {
+    font-size: 0.75rem;
+    color: var(--slate-light);
+    font-weight: 500;
+  }
+
+  /* Section labels */
+  .section-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--green);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  /* Headings */
+  h1 {
+    font-size: 2.75rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--navy);
+    margin-bottom: 1.25rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+  }
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.35rem;
+  }
+
+  .subtitle {
+    font-size: 1.125rem;
+    color: var(--slate);
+    line-height: 1.6;
+    max-width: 540px;
+    margin-bottom: 2.5rem;
+  }
+
+  /* Stat cards */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+  }
+  .stat-card {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+  .stat-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--green);
+    letter-spacing: -0.02em;
+  }
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--slate);
+    margin-top: 0.25rem;
+    line-height: 1.4;
+  }
+  .stat-context {
+    font-size: 0.75rem;
+    color: var(--slate-light);
+    margin-top: 0.35rem;
+  }
+
+  /* Feature grid */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .feature {
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg);
+  }
+  .feature h3 { font-size: 0.95rem; margin-bottom: 0.35rem; }
+  .feature p { font-size: 0.85rem; color: var(--slate); line-height: 1.5; }
+
+  /* Tags */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .tag {
+    font-size: 0.8rem;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 0.35rem 0.85rem;
+    color: var(--slate-dark);
+    font-weight: 500;
+  }
+
+  /* Tier cards */
+  .tiers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+  .tier {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .tier.featured {
+    border-color: var(--green);
+    background: linear-gradient(to bottom, var(--green-light) 0%, var(--bg) 40%);
+  }
+  .tier-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--slate-light);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+  .tier.featured .tier-label { color: var(--green); }
+  .tier h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .tier ul {
+    list-style: none;
+    margin-top: 0.5rem;
+    flex-grow: 1;
+  }
+  .tier li {
+    font-size: 0.82rem;
+    color: var(--slate);
+    line-height: 1.6;
+    padding-left: 1.25rem;
+    position: relative;
+  }
+  .tier li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-weight: 700;
+  }
+  .tier .best-for {
+    font-size: 0.75rem;
+    color: var(--slate-light);
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+    font-style: italic;
+  }
+
+  /* Trust note */
+  .trust-note {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin-top: 1rem;
+  }
+  .trust-note p {
+    font-size: 0.9rem;
+    color: var(--slate);
+    line-height: 1.6;
+  }
+  .trust-note strong { color: var(--navy); }
+
+  /* Footer */
+  .page-footer {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 4rem;
+    right: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  .page-footer span {
+    font-size: 0.7rem;
+    color: var(--slate-light);
+    font-weight: 500;
+  }
+
+  /* Audience section */
+  .audience-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  .audience-section h3 {
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+    color: var(--navy);
+  }
+  .audience-section ul {
+    list-style: none;
+  }
+  .audience-section li {
+    font-size: 0.85rem;
+    color: var(--slate);
+    line-height: 1.8;
+    padding-left: 1rem;
+    position: relative;
+  }
+  .audience-section li::before {
+    content: "·";
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-weight: 900;
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+
+  .callout-box {
+    background: var(--bg-subtle);
+    border-left: 3px solid var(--green);
+    border-radius: 0 10px 10px 0;
+    padding: 1.25rem 1.5rem;
+    margin-top: 1.5rem;
+  }
+  .callout-box p {
+    font-size: 0.875rem;
+    color: var(--slate);
+    line-height: 1.6;
+  }
+
+  /* Contact */
+  .contact-section {
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+  .contact-section h1 {
+    margin-bottom: 1rem;
+  }
+  .contact-section .subtitle {
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
+  }
+  .contact-link {
+    display: inline-block;
+    background: var(--green);
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .contact-details {
+    margin-top: 2rem;
+    font-size: 0.875rem;
+    color: var(--slate-light);
+    line-height: 1.8;
+  }
+
+  @media print {
+    .page { padding: 2rem 3rem; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: WHY MAIN BRANCH -->
+<div class="page">
+  <div class="topbar">
+    <div>
+      <div class="topbar-brand">Main Branch</div>
+      <div class="topbar-sub">Fundamentals first, always.</div>
+    </div>
+    <div class="topbar-page">Sponsor Package · March 2026</div>
+  </div>
+
+  <div class="section-label">Sponsorship Opportunities</div>
+  <h1>Reach the developers<br>who build and buy.</h1>
+  <p class="subtitle">A no-hype developer newsletter covering GitHub, Git workflows, and the tools that ship real code. Every issue is a focused 3-minute read.</p>
+
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-number">51.8%</div>
+      <div class="stat-label">Open Rate</div>
+      <div class="stat-context">3× the industry average (18%)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">200+</div>
+      <div class="stat-label">Engaged Subscribers</div>
+      <div class="stat-context">Senior devs & engineering leads</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">3 min</div>
+      <div class="stat-label">Read Time</div>
+      <div class="stat-context">100% curated, zero filler</div>
+    </div>
+  </div>
+
+  <div class="features">
+    <div class="feature">
+      <h3>Elite Engagement, Not Vanity Metrics</h3>
+      <p>More than half the list reads every issue. Most newsletters at 10× the size can't say that.</p>
+    </div>
+    <div class="feature">
+      <h3>Decision-Maker Audience</h3>
+      <p>Subscribers include engineering leads and senior developers who choose the tools their teams use.</p>
+    </div>
+    <div class="feature">
+      <h3>Authentic Voice</h3>
+      <p>Written by Andrea Griffiths, Senior Developer Advocate at GitHub. Recommendations are earned, not sold.</p>
+    </div>
+    <div class="feature">
+      <h3>Get In Early</h3>
+      <p>The audience is growing. Early sponsors get premium positioning and pricing before the list scales.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>mainbranch.dev</span>
+    <span>By Andrea Griffiths · Senior Developer Advocate at GitHub</span>
+  </div>
+</div>
+
+<!-- PAGE 2: AUDIENCE PROFILE -->
+<div class="page">
+  <div class="topbar">
+    <div>
+      <div class="topbar-brand">Main Branch</div>
+      <div class="topbar-sub">Fundamentals first, always.</div>
+    </div>
+    <div class="topbar-page">Audience Profile</div>
+  </div>
+
+  <div class="section-label">Who's Reading</div>
+  <h1>Your ideal buyers,<br>already reading.</h1>
+  <p class="subtitle">Main Branch readers are professional developers and technical leaders who actively choose their tools, influence purchasing decisions, and shape the technology stack at their organizations.</p>
+
+  <div class="audience-grid">
+    <div class="audience-section">
+      <h3>Reader Roles</h3>
+      <ul>
+        <li>Senior Software Engineers</li>
+        <li>Engineering Managers & Leads</li>
+        <li>Developer Advocates</li>
+        <li>DevOps & Platform Engineers</li>
+        <li>Technical Founders & CTOs</li>
+        <li>Open Source Maintainers</li>
+      </ul>
+    </div>
+    <div class="audience-section">
+      <h3>Reader Interests</h3>
+      <ul>
+        <li>GitHub & Git workflows</li>
+        <li>Developer tools & productivity</li>
+        <li>AI-assisted coding & MCP</li>
+        <li>Open source best practices</li>
+        <li>Security & supply chain</li>
+        <li>Language fundamentals</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout-box">
+    <p><strong>Why this audience matters:</strong> These aren't passive scrollers. They evaluate, purchase, and champion developer tools at their companies. When they recommend something, engineering orgs listen. Your brand gets high-trust exposure to the people who actually make buying decisions.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>mainbranch.dev</span>
+    <span>Sponsor Package · March 2026</span>
+  </div>
+</div>
+
+<!-- PAGE 3: WAYS TO PARTNER -->
+<div class="page">
+  <div class="topbar">
+    <div>
+      <div class="topbar-brand">Main Branch</div>
+      <div class="topbar-sub">Fundamentals first, always.</div>
+    </div>
+    <div class="topbar-page">Partnership Tiers</div>
+  </div>
+
+  <div class="section-label">Ways to Partner</div>
+  <h1>Flexible formats,<br>real results.</h1>
+  <p class="subtitle">Every partnership is tailored. Here's what's available:</p>
+
+  <div class="tiers">
+    <div class="tier">
+      <div class="tier-label">Awareness</div>
+      <h3>Newsletter Mention</h3>
+      <ul>
+        <li>Text mention woven naturally into the issue</li>
+        <li>Link to your product or landing page</li>
+        <li>Seen by every reader in a trusted context</li>
+      </ul>
+      <div class="best-for">Best for: Awareness and first impressions</div>
+    </div>
+    <div class="tier featured">
+      <div class="tier-label">Most Popular</div>
+      <h3>Featured Sponsor</h3>
+      <ul>
+        <li>Your own section with logo + copy</li>
+        <li>Primary placement above the fold</li>
+        <li>Up to 100 words of custom messaging + CTA</li>
+      </ul>
+      <div class="best-for">Best for: Product launches and sustained visibility</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">Maximum Impact</div>
+      <h3>Deep Dive</h3>
+      <ul>
+        <li>Full sponsored section in Main Branch's voice</li>
+        <li>Product spotlight or mini-review format</li>
+        <li>CTA + social amplification across LinkedIn, X, and YouTube</li>
+      </ul>
+      <div class="best-for">Best for: Driving signups, demos, and conversions</div>
+    </div>
+  </div>
+
+  <div class="trust-note">
+    <p><strong>A note on trust.</strong> I will never recommend a product, tool, or company I don't personally believe in or use myself. Every sponsorship goes through the same filter as my own content: does this genuinely help developers? If the answer isn't yes, it doesn't run.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>mainbranch.dev</span>
+    <span>Sponsor Package · March 2026</span>
+  </div>
+</div>
+
+<!-- PAGE 4: LET'S TALK -->
+<div class="page">
+  <div class="topbar">
+    <div>
+      <div class="topbar-brand">Main Branch</div>
+      <div class="topbar-sub">Fundamentals first, always.</div>
+    </div>
+    <div class="topbar-page">Get Started</div>
+  </div>
+
+  <div class="contact-section">
+    <div class="section-label">Let's Work Together</div>
+    <h1>Ready to reach developers<br>who actually read?</h1>
+    <p class="subtitle">Get in touch to discuss partnership opportunities and find the right fit for your brand.</p>
+    <a href="mailto:newsletter@mainbranch.dev" class="contact-link">Get in Touch →</a>
+    <div class="contact-details">
+      newsletter@mainbranch.dev<br>
+      mainbranch.dev<br>
+      Andrea Griffiths · Senior Developer Advocate at GitHub
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>mainbranch.dev</span>
+    <span>© 2026 Main Branch. All rights reserved.</span>
+  </div>
+</div>
+
+</body>
+</html>
